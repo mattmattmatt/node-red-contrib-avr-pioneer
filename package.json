@@ -1,0 +1,94 @@
+{
+  "name": "node-red-contrib-avr-pioneer",
+  "version": "0.0.0-development",
+  "description": "A collection of Node-RED nodes for controlling and observing Pioneer audio/video receivers.",
+  "main": "dist/pioneer-avr-config.js",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "node-red",
+    "pioneer",
+    "avr",
+    "smart home",
+    "automation"
+  ],
+  "scripts": {
+    "lint": "eslint --report-unused-disable-directives ./*.js ./src/*.js",
+    "fix": "eslint --fix ./*.js ./src/*.js",
+    "test": "npm run lint && echo \"No tests yet\"",
+    "dist-clean": "rm -rf dist",
+    "build": "webpack --config tooling/webpack.config.js",
+    "red": "node-red -v ~/.node-red/flows.json",
+    "build-red": "npm run build | sleep 2 && npm run red",
+    "dev": "nodemon --ext js,html,json --exec \"npm run build-red\" --ignore \"dist/\" ",
+    "semantic-release": "semantic-release",
+    "commitmsg": "commitlint -x \"@commitlint/config-conventional\" -e $GIT_PARAMS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattmattmatt/node-red-contrib-avr-pioneer.git"
+  },
+  "author": "mattmattmatt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattmattmatt/node-red-contrib-avr-pioneer/issues"
+  },
+  "homepage": "https://github.com/mattmattmatt/node-red-contrib-avr-pioneer#readme",
+  "node-red": {
+    "nodes": {
+      "pioneer-avr-config": "dist/pioneer-avr-config.js",
+      "pioneer-avr-out": "dist/pioneer-avr-out.js"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "es5",
+          "bracketSpacing": true,
+          "tabWidth": 4,
+          "printWidth": 100
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "dist/*"
+  ],
+  "release": {
+    "dryRun": false,
+    "debug": true
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "babel-loader": "^8.0.4",
+    "copy-webpack-plugin": "^4.6.0",
+    "eslint": "^5.9.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.0",
+    "nodemon": "^1.17.3",
+    "prettier": "^1.15.3",
+    "semantic-release": "^15.12.3",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {}
+}
