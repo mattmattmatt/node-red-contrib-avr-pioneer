@@ -49,6 +49,8 @@ export default function PioneerAvrConfig(RED) {
 
         const onError = error => {
             console.error(`pioneer-avr-config: Error at ${host}`, error);
+            node.warn(`pioneer-avr-config: Error at ${host}`);
+
             clearTimeout(reconnectionTimeout);
             reconnectionTimeout = setTimeout(startConnection, RECONNETION_INTERVAL_SECS);
 

@@ -67,7 +67,7 @@ export default function PioneerAvrOut(RED) {
                 .toString()
                 .replace('\n', '')
                 .replace('\r', '');
-            node.log(`Data from avr: ${data}`);
+            node.debug(`Data from avr: ${data}`);
 
             if (data.startsWith('PWR')) {
                 avrState.on = parse(data[3]) === 0;
@@ -88,12 +88,12 @@ export default function PioneerAvrOut(RED) {
             }
 
             if (data !== 'R') {
-                node.log(`AVR state ${JSON.stringify(avrState)}`);
+                node.trace(`AVR state ${JSON.stringify(avrState)}`);
             }
         };
 
         const sendData = data => {
-            node.log(`Sending to AVR ${data}`);
+            node.debug(`Sending to AVR ${data}`);
             node.serverConfig.client.write(`${data}\n\r`);
         };
 
@@ -150,7 +150,7 @@ export default function PioneerAvrOut(RED) {
         };
 
         const onInput = msg => {
-            node.log(`Node input: ${JSON.stringify(msg.payload)}`);
+            node.trace(`Node input: ${JSON.stringify(msg.payload)}`);
             queue.push(msg.payload);
             sendNext();
         };
