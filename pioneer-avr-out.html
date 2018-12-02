@@ -27,7 +27,7 @@
 <script type="text/x-red"
     data-template-name="pioneer-avr-out">
     <div class="form-row">
-        <label for="node-input-server"><i class="icon-tag"></i> Yeelight</label>
+        <label for="node-input-server"><i class="icon-tag"></i> Receiver</label>
         <input type="text" id="node-input-server" />
     </div>
     <div class="form-row">
@@ -40,37 +40,33 @@
 
 <script type="text/x-red"
     data-help-name="pioneer-avr-out">
-    <p>Sets the state of the selected Yeelight device, largely <a href="https://github.com/jdomeij/node-red-contrib-node-hue#readme">compatible with node-red-contrib-node-hue</a>.</p>
+    <p>Sets the state of the selected Pioneer receiver.</p>
     <h3>Inputs</h3>
      <dl class="message-properties">
          <dt>payload <span class="property-type">object</span></dt>
-         <dd>an object containing the next state of the selected Yeelight device.</dd>
+         <dd>an object containing the next state of the Pioneer receiver.</dd>
+         <dt>payload.on <span class="property-type">bool</span></dt>
+         <dd></dd>
+         <dt>payload.muted <span class="property-type">bool</span></dt>
+         <dd></dd>
+         <dt>payload.volume <span class="property-type">number</span></dt>
+         <dd></dd>
+         <dt>payload.channel <span class="property-type">enum</span></dt>
+         <dd>One of <code>CD</code>, <code>TUNER</code>, <code>DVD</code>, <code>TV</code>, <code>SAT/CBL</code>, <code>VIDEO</code>, <code>DVR/BDR</code>, <code>IPOD/USB</code>, <code>BD</code>, <code>ADAPTER</code>, <code>NETRADIO</code>, <code>MEDIA SERVER</code>, <code>FAVORITE</code>, <code>GAME</code></dd>
      </dl>
-
-     <h3>Details</h3>
-     <p>The node supports sending hex values, HSV values and color temperature values.</p>
-     <p>The brightness value will always have to be provided separately and will not be deducted from e.g. a hex value's brightness component.</p>
 
      <h4>Example inputs</h4>
      <p>
      <pre><code>{
-    "on": true,
-    "bri": 255,
-    "hue": 913,
-    "sat": 255,
-    "duration": 5000
+    "on": true
 }</code></pre>
     <pre><code>{
     "on": true,
-    "bri": 120,
-    "hex": "#AA00CC"
+    "channel": "CD",
+    "volume": 111
 }</code></pre>
     <pre><code>{
-"on": true,
-"ct": 2200
+    "muted": true
 }</code></pre>
      </p>
-
-     <h3>References</h3>
-     <p>This node's input is based on <a href="https://github.com/jdomeij/node-red-contrib-node-hue#readme">node-red-contrib-node-hue</a>, which is based on <a href="https://github.com/peter-murray/node-hue-api#lightstate-options">Node Hue API</a>.</p>
 </script>

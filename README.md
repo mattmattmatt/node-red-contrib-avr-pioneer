@@ -30,19 +30,19 @@ Provides two palette nodes – one to send control commands to a Pioneer AVR, an
 
 Sets the state of the receiver.
 
-`msg.payload` must be an object containing the new state's properties of the selected Yeelight device.
+`msg.payload` must be an object containing the new state's properties of the Pioneer receiver.
 
 | Property | Details |
 | :---| :---|
 | `on`   | Sets the `on` state where the value is `true` or `false` |
 | `muted`   | Sets the `muted` state where the value is `true` or `false` |
-| `volume`   | Sets the volume from `0` to `153` |
+| `volume`   | Sets the volume from `0` to `74`, or whatever your receiver's maximum is |
 | `channel` | Sets the active input channel, must be one of `CD`, `TUNER`, `DVD`, `TV`, `SAT/CBL`, `VIDEO`, `DVR/BDR`, `IPOD/USB`, `BD`, `ADAPTER`, `NETRADIO`, `MEDIA SERVER`, `FAVORITE`, `GAME` |
 
 #### Example payloads
 
 ```JSON
- {
+{
     "on": true
 }
 ```
