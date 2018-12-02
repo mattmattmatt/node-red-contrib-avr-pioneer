@@ -11,6 +11,11 @@
                 required: true,
                 validate: RED.validators.number()
             },
+            volumeMultiplier: {
+                value: 0.4897959183673469,
+                required: false,
+                validate: v => v === undefined || typeof v === 'number',
+            },
             name: {
                 value: '',
                 required: false,
@@ -34,6 +39,10 @@
         <input type="text" id="node-config-input-port" placeholder="8102">
     </div>
     <div class="form-row">
+        <label for="node-config-input-volume-multiplier"><i class="icon-bookmark"></i> Volume Multiplier</label>
+        <input type="text" id="node-config-input-volume-multiplier" placeholder="0.4897959183673469">
+    </div>
+    <div class="form-row">
         <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
         <input type="text" id="node-config-input-name">
     </div>
@@ -41,12 +50,14 @@
 
 <script type="text/x-red"
     data-help-name="pioneer-avr-config">
-    <p>Configures a Yeelight connection to be used with "Yeelight Out" and "Yeelight State" nodes.</p>
+    <p>Configures a Pioneer AVR receiver connection to be used with "Pioneer Out" and "Pioneer State" nodes.</p>
     <h3>Options</h3>
      <dl class="message-properties">
          <dt>Hostname <span class="property-type">string</span></dt>
          <dd>an IP address or other hostname that points to a Pioneer receiver on the network</dd>
          <dt>Port <span class="property-type">number</span></dt>
          <dd>port number the receiver is accessible over, default being <code>8102</code></dd>
+         <dt>Volume Multiplier <span class="property-type">number</span></dt>
+         <dd>a factor to multiply volume values sent by the receiver by, default being <code>0.4897959183673469</code></dd>
      </dl>
 </script>

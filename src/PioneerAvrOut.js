@@ -74,7 +74,9 @@ export default function PioneerAvrOut(RED) {
             }
 
             if (data.startsWith('VOL')) {
-                avrState.volume = parse(data.substring(3, 6));
+                avrState.volume = Math.round(
+                    parse(data.substring(3, 6)) * node.serverConfig.volumeMultiplier
+                );
             }
 
             if (data.startsWith('MUT')) {
@@ -102,8 +104,6 @@ export default function PioneerAvrOut(RED) {
 
             isBusy = true;
             let msg = queue.shift();
-
-            // console.log('handling message', msg);
 
             if (isJson(msg)) {
                 msg = JSON.parse(msg);

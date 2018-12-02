@@ -3,9 +3,8 @@ import { Socket } from 'net';
 const RECONNETION_INTERVAL_SECS = 5000;
 
 export default function PioneerAvrConfig(RED) {
-    console.log('-------> HI FROM WITHIN THE MODULE');
     return function(config) {
-        const { hostname, port } = config;
+        const { hostname, port, volumeMultiplier = 0.4897959183673469 } = config;
         const node = this;
         const host = `${hostname}:${port}`;
         let reconnectionTimeout;
@@ -49,7 +48,7 @@ export default function PioneerAvrConfig(RED) {
         };
 
         const onError = error => {
-            console.error(`Error at ${host}`, error);
+            console.error(`pioneer-avr-config: Error at ${host}`, error);
             clearTimeout(reconnectionTimeout);
             reconnectionTimeout = setTimeout(startConnection, RECONNETION_INTERVAL_SECS);
 
@@ -57,7 +56,7 @@ export default function PioneerAvrConfig(RED) {
         };
 
         const startConnection = () => {
-            node.log(`Connecting to Pioneer ${host}`);
+            node.log(`Connecting to ${host}`);
             node.client = new Socket();
             node.client.connect(
                 port,
@@ -75,6 +74,7 @@ export default function PioneerAvrConfig(RED) {
 
             node.hostname = hostname;
             node.port = port;
+            node.volumeMultiplier = volumeMultiplier;
 
             if (hostname && port) {
                 startConnection();
@@ -82,7 +82,7 @@ export default function PioneerAvrConfig(RED) {
                 node.on('close', () => {
                     node.log('Closing connection');
                     clearTimeout(reconnectionTimeout);
-                    node.client.exit();
+                    node.client.end();
                 });
             }
         })();
