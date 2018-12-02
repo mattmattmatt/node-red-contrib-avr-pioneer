@@ -5,9 +5,9 @@ node_js:
 notifications:
   email: false
 
-cache:
-  directories:
-    - "node_modules"
+# cache:
+#   directories:
+#     - "node_modules"
 
 jobs:
     include:
