@@ -21,9 +21,9 @@ npm i node-red-contrib-avr-pioneer -S
 
 ## Usage
 
-Provides two palette nodes – one to send control commands to a Pioneer AVR, and one to receive messages when receiver's state changes.
+Currently provides one palette node – one to send control commands to a Pioneer AVR.
 
-![](https://github.com/mattmattmatt/node-red-contrib-avr-pioneer/blob/master/tooling/nodes.png?raw=true)
+![](https://cldup.com/T5692bE_OT.png)
 
 
 ### Output node
@@ -37,7 +37,7 @@ Sets the state of the receiver.
 | `on`   | Sets the `on` state where the value is `true` or `false` |
 | `muted`   | Sets the `muted` state where the value is `true` or `false` |
 | `volume`   | Sets the volume from `0` to `74`, or whatever your receiver's maximum is |
-| `channel` | Sets the active input channel, must be one of `CD`, `TUNER`, `DVD`, `TV`, `SAT/CBL`, `VIDEO`, `DVR/BDR`, `IPOD/USB`, `BD`, `ADAPTER`, `NETRADIO`, `MEDIA SERVER`, `FAVORITE`, `GAME` |
+| `channel` | Sets the active input channel, must be one of `PHONO`, `CD`, `TUNER`, `TAPE`, `DVD`, `TV`, `SAT/CBL`, `SAT`, `CBL`, `CABLE`, `VIDEO`, `MULTI CH IN`, `USB-DAC`, `VIDEO2`, `DVR/BDR`, `DVR`, `BDR`, `IPOD/USB`, `USB`, `IPOD`, `XM RADIO`, `HDMI1`, `HDMI2`, `HDMI3`, `HDMI4`, `HDMI5`, `HDMI6`, `BD`, `MEDIA GALLERY`, `SIRIUS`, `HDMI CYCLE`, `ADAPTER`, `HDMI7`, `HDMI8`, `NETRADIO`, `SIRIUSXM`, `PANDORA`, `MEDIA SERVER`, `MEDIA`, `FAVORITE`, `MHL`, `GAME`, `SPOTIFY`.<br> [See source](https://github.com/mattmattmatt/node-red-contrib-avr-pioneer/blob/master/src/PioneerAvrOut.js#L5) for more info on input codes. |
 
 #### Example payloads
 
